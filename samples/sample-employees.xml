@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Employees>
+  <Employee>
+    <EmployeeId>EMP001</EmployeeId>
+    <PersonalInfo>
+      <FullName>Alice Johnson</FullName>
+      <StartDate>2019-03-15</StartDate>
+    </PersonalInfo>
+    <Department code="ENG">Engineering</Department>
+    <Hours>
+      <Regular>40.50</Regular>
+      <Overtime>0.00</Overtime>
+    </Hours>
+  </Employee>
+  <Employee>
+    <EmployeeId>EMP002</EmployeeId>
+    <PersonalInfo>
+      <FullName>Bob Smith</FullName>
+      <StartDate>2021-07-22</StartDate>
+    </PersonalInfo>
+    <Department code="HR">Human Resources</Department>
+    <Hours>
+      <Regular>38.00</Regular>
+      <Overtime>0.00</Overtime>
+    </Hours>
+  </Employee>
+  <Employee>
+    <EmployeeId>EMP003</EmployeeId>
+    <PersonalInfo>
+      <FullName>Carol White</FullName>
+      <StartDate>2020-11-01</StartDate>
+    </PersonalInfo>
+    <Department code="SALES">Sales</Department>
+    <Hours>
+      <Regular>42.25</Regular>
+      <Overtime>2.25</Overtime>
+    </Hours>
+  </Employee>
+</Employees>

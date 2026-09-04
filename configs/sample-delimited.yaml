@@ -1,0 +1,32 @@
+fileType: delimited
+description: "Sample CSV employee feed"
+delimiter: ","
+hasHeader: true
+skipRows: 0
+
+recordBoundary:
+  type: row
+
+fields:
+  - name: employeeId
+    extractor: column
+    sourceColumn: "Employee ID"
+
+  - name: fullName
+    extractor: column
+    sourceColumn: "Full Name"
+
+  - name: department
+    extractor: column
+    sourceColumn: "Department"
+
+  - name: hoursWorked
+    extractor: column
+    sourceColumn: "Hours Worked"
+    type: decimal
+
+  - name: startDate
+    extractor: column
+    sourceColumn: "Start Date"
+    type: date
+    dateFormat: "MM/dd/yyyy"

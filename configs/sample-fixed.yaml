@@ -1,0 +1,28 @@
+fileType: fixed
+description: "Fixed-width employee file"
+skipRows: 1
+
+recordBoundary:
+  type: row
+
+fields:
+  - name: employeeId
+    startPos: 0
+    length: 8
+    trim: true
+
+  - name: fullName
+    startPos: 8
+    length: 30
+    trim: true
+
+  - name: department
+    startPos: 38
+    length: 20
+    trim: true
+
+  - name: hoursWorked
+    startPos: 58
+    length: 8
+    type: decimal
+    trim: true

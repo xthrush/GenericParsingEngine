@@ -1,0 +1,35 @@
+fileType: xml
+description: "XML employee feed"
+
+recordBoundary:
+  type: xpath
+  xpath: "//Employees/Employee"
+
+fields:
+  - name: employeeId
+    extractor: xpath
+    xpath: "EmployeeId"
+
+  - name: fullName
+    extractor: xpath
+    xpath: "PersonalInfo/FullName"
+
+  - name: department
+    extractor: xpath
+    xpath: "Department"
+
+  - name: departmentCode
+    extractor: attribute
+    xpath: "Department"
+    attribute: "code"
+
+  - name: hoursWorked
+    extractor: xpath
+    xpath: "Hours/Regular"
+    type: decimal
+
+  - name: startDate
+    extractor: xpath
+    xpath: "PersonalInfo/StartDate"
+    type: date
+    dateFormat: "yyyy-MM-dd"

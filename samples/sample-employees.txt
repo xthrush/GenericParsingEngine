@@ -1,0 +1,4 @@
+EmpId   Full Name                     Department          Hours
+EMP001  Alice Johnson                 Engineering         40.50
+EMP002  Bob Smith                     Human Resources     38.00
+EMP003  Carol White                   Sales               42.25
