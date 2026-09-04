@@ -66,7 +66,8 @@ void RunMenu()
                 break;
 
             case "4":
-                RunPdfOption(baseDir);
+                RunParse(Path.Combine(baseDir, "samples", "sample-employees.pdf"),
+                          Path.Combine(baseDir, "configs", "sample-pdf.yaml"));
                 break;
 
             case "0":
@@ -80,23 +81,6 @@ void RunMenu()
                 break;
         }
     }
-}
-
-void RunPdfOption(string baseDir)
-{
-    // No PDF sample ships with the repo (see README) — ask for a real file.
-    Console.Write("Path to a PDF file to parse: ");
-    var pdfPath = Console.ReadLine()?.Trim();
-    Console.WriteLine();
-
-    if (string.IsNullOrWhiteSpace(pdfPath))
-    {
-        Console.WriteLine("No path entered — returning to menu.");
-        Console.WriteLine();
-        return;
-    }
-
-    RunParse(pdfPath, Path.Combine(baseDir, "configs", "sample-pdf.yaml"));
 }
 
 string ResolveBaseDir()

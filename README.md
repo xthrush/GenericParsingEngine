@@ -72,9 +72,9 @@ dotnet run --project src/GenericParsingEngine -- \
 dotnet run --project src/GenericParsingEngine -- \
   samples/sample-employees.xml configs/sample-xml.yaml
 
-# PDF (requires an actual PDF file)
+# PDF
 dotnet run --project src/GenericParsingEngine -- \
-  path/to/report.pdf configs/sample-pdf.yaml
+  samples/sample-employees.pdf configs/sample-pdf.yaml
 ```
 
 ### Running without arguments (interactive menu)
@@ -95,10 +95,9 @@ Select a sample file type to parse:
 >
 ```
 
-Options 1-3 run against the bundled sample files. Option 4 prompts for the
-path to a PDF file, since no sample PDF ships with the repo. Selecting an
-option returns to the menu afterward so you can try another file type;
-choose `0` to exit.
+All four options run against the bundled sample files. Selecting an option
+returns to the menu afterward so you can try another file type; choose `0`
+to exit.
 
 ---
 
@@ -263,6 +262,20 @@ fields:
 
 ### PDF
 
+`samples/sample-employees.pdf` has one page per employee, each formatted like:
+
+```
+Weekly Employee Report
+────────────────────────────
+Employee ID: EMP-00001
+Name: Alice Johnson
+Department: Engineering
+Start Date: 03/15/2019
+
+Weekly Hours
+Regular Hours: 40.50
+```
+
 ```yaml
 fileType: pdf
 recordBoundary:
@@ -277,13 +290,19 @@ fields:
     extractor: labelValue
     label: "Name:"
     direction: right
-  - name: regularHours
-    extractor: table
-    tableHeader: "Weekly Hours"
-    column: "Hours"
-    row: "Regular"
+  - name: hoursWorked
+    extractor: regex
+    pattern: "Regular Hours:\\s+([\\d.]+)"
+    group: 1
     type: decimal
 ```
+
+> **Note on the `table` extractor:** `PdfParser` currently joins every extracted
+> line's words with a single space regardless of their real on-page gap, so the
+> `table` extractor's column-splitting (which looks for runs of 2+ spaces) never
+> matches against real PDF text — it's a pre-existing limitation, not something
+> introduced by this sample. The bundled config uses `regex` for `hoursWorked`
+> instead, which does work reliably.
 
 ---
 
@@ -372,7 +391,8 @@ GenericParsingEngine/
 └── samples/
     ├── sample-employees.csv
     ├── sample-employees.txt
-    └── sample-employees.xml
+    ├── sample-employees.xml
+    └── sample-employees.pdf
 ```
 
 ---

@@ -1,5 +1,5 @@
 fileType: pdf
-description: "Weekly employee PDF report — one record block per employee ID"
+description: "Weekly employee PDF report — one page per employee"
 
 recordBoundary:
   type: pattern
@@ -28,9 +28,8 @@ fields:
     type: date
     dateFormat: "MM/dd/yyyy"
 
-  - name: regularHours
-    extractor: table
-    tableHeader: "Weekly Hours"
-    column: "Hours"
-    row: "Regular"
+  - name: hoursWorked
+    extractor: regex
+    pattern: "Regular Hours:\\s+([\\d.]+)"
+    group: 1
     type: decimal
