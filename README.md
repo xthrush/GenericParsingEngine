@@ -77,13 +77,28 @@ dotnet run --project src/GenericParsingEngine -- \
   path/to/report.pdf configs/sample-pdf.yaml
 ```
 
-### Running without arguments (demo mode)
+### Running without arguments (interactive menu)
 
 ```bash
 dotnet run --project src/GenericParsingEngine
 ```
 
-Runs the CSV sample automatically.
+Prompts with a menu to pick a sample file type to parse:
+
+```
+Select a sample file type to parse:
+  1) Delimited (CSV)
+  2) Fixed-width
+  3) XML
+  4) PDF
+  0) Exit
+>
+```
+
+Options 1-3 run against the bundled sample files. Option 4 prompts for the
+path to a PDF file, since no sample PDF ships with the repo. Selecting an
+option returns to the menu afterward so you can try another file type;
+choose `0` to exit.
 
 ---
 
